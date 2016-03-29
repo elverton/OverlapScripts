@@ -12,25 +12,25 @@ path_diff_list = FLAGS OF FILL_MISSING AND FIX_STAR
 -- Numbers from report_1
 Numbers of detections:
 cd /mnt/data2/elverton/TopoMap/scripts/database/20160127 
-for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+for i in `grep -v "#" ../../../experiments/OverlapScripts/config/nodelist.txt`;
 do grep -v "0 empty 0 empty 0" changes.$i | wc -l; done | awk '{s +=
     $1}END{print s}'
 
 Numbers of path:
 
 cd /mnt/data2/elverton/TopoMap/scripts/database/20160127
-for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+for i in `grep -v "#" ../../../experiments/OverlapScripts/config/nodelist.txt`;
 do wc -l path.$i; done | awk '{s += $1}END{print s}'
 
 Detection dots:
-for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+for i in `grep -v "#" ../../../experiments/OverlapScripts/config/nodelist.txt`;
 do grep -v "0 empty 0 empty 0" changes.$i | wc -l; done >
-    ../../../experiments/simulation_new/graphs/cdfs_basic/detection_dots.txt
+    ../../../experiments/OverlapScripts/graphs/cdfs_basic/detection_dots.txt
 
 Path dots:
-for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+for i in `grep -v "#" ../../../experiments/OverlapScripts/config/nodelist.txt`;
 do cat paths.$i | wc -l; done >
-    ../../../experiments/simulation_new/graphs/cdfs_basic/paths_dots.txt
+    ../../../experiments/OverlapScripts/graphs/cdfs_basic/paths_dots.txt
 
 
 
@@ -45,5 +45,5 @@ Some explanations:
 - scripts/database/changes: The same of overlap but with the pathdiff between
   old and new paths
 - scripts/database/destinations: The destinations used
-- process_output/intersections: All routes passing through detections. Discart
+- ../process/intersections: All routes passing through detections. Discart
   detections that do not have intersections

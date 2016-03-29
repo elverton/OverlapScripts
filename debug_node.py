@@ -7,7 +7,7 @@ from os import makedirs
 node = argv[1]
 
 output_file = "/mnt/data2/elverton/TopoMap/experiments/"+\
-    "simulation_new/process_output/20160127_consider_lb/" +\
+    "processed/20160127_consider_lb/" +\
     "intersections_with_changes." + node
 
 infos = dict()

@@ -379,9 +379,6 @@ def graph_cdf_changed_overlap_cut_b(infos):
     plt.savefig('out_cdf_changed_overlap_cut_bj.pdf')
     plt.clf()
 
-
-
-
 # ----------------------------------------------------------- #
 """
 The goal of this graph is to know better how the overlapping route
