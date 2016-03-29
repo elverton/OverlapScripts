@@ -1,0 +1,49 @@
+path_diff_list_raw = NO FLAGS OF FILL_MISSING AND FIX_STAR
+path_diff_list = FLAGS OF FILL_MISSING AND FIX_STAR
+
+- First, run 'process_all.py' to process the data from database dir. It will give
+  the intersection files
+- Second, run 'get_overlap_changes.sh' to get the diff between overlaps and
+  generate the file intersectionpp files
+- Third, run the 'evaluation.sh' to get the evaluation files.
+
+
+#######################
+-- Numbers from report_1
+Numbers of detections:
+cd /mnt/data2/elverton/TopoMap/scripts/database/20160127 
+for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+do grep -v "0 empty 0 empty 0" changes.$i | wc -l; done | awk '{s +=
+    $1}END{print s}'
+
+Numbers of path:
+
+cd /mnt/data2/elverton/TopoMap/scripts/database/20160127
+for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+do wc -l path.$i; done | awk '{s += $1}END{print s}'
+
+Detection dots:
+for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+do grep -v "0 empty 0 empty 0" changes.$i | wc -l; done >
+    ../../../experiments/simulation_new/graphs/cdfs_basic/detection_dots.txt
+
+Path dots:
+for i in `grep -v "#" ../../../experiments/simulation_new/config/nodelist.txt`;
+do cat paths.$i | wc -l; done >
+    ../../../experiments/simulation_new/graphs/cdfs_basic/paths_dots.txt
+
+
+
+
+#######################
+
+Some explanations:
+- scripts/database/overlap: all detections that meet the requirements of being a
+  "healthy" detection
+- scripts/database/paths: all paths that meet the requirements of being a
+  "healthy" path
+- scripts/database/changes: The same of overlap but with the pathdiff between
+  old and new paths
+- scripts/database/destinations: The destinations used
+- process_output/intersections: All routes passing through detections. Discart
+  detections that do not have intersections
